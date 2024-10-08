@@ -1,0 +1,28 @@
+@import "style.css";
+
+#links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 4rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.link-container {
+    animation: stack-links 900ms ease-in-out calc(50ms * var(--order));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 11rem;
+    width: 9rem;
+    background-color:  var(--link-container-color);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border-style: solid;
+    border-color: rgba(2, 0, 14, 0.612);;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+}
+
+

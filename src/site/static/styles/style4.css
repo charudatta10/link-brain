@@ -1,0 +1,22 @@
+@import "style.css";
+
+#links-container {
+    display: flex; /* Use flexbox to arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if they overflow */
+    gap: 20px; /* Gap between each item */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#links-container .link-container {
+    flex: 1 0 100px; /* Allow flex items to grow and shrink, with a min width of 100px */
+    margin-bottom: 20px; /* Space at the bottom for separation */
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content
+
