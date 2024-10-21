@@ -1,2 +1,13 @@
 @import "style.css";
 
+
+.link-container {
+    height: 6rem;
+    width: 6rem;
+    background-color: var(--link-container-color);
+    border-radius: 50%; /* Optional: Make container circular */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

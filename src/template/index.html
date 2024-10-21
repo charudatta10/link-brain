@@ -27,7 +27,9 @@
         <div id="links-container" class="">
             {% for page in paginated_links %}
             <div class="page">
+                <div class="link-container-row">
                 {% for link in page %}
+                
                 <div class="link-container" style="--order: {{ loop.index }};">
                     <a href="{{ link[1] }}" target="_blank">
                         <div class="link-content">
@@ -39,7 +41,9 @@
                         </div>
                     </a>
                 </div>
+                
                 {% endfor %}
+            </div>
             </div>
             {% endfor %}
         </div>

@@ -160,6 +160,14 @@ body {
     transform: scale(1.05);
 }
 
+.link-container-row {
+    display: grid;
+    grid-template-columns: repeat(4,100fr);
+    width: 10px;
+    gap: 20px;
+    
+}
+
 .link-container a {
     text-decoration: none;
     width: 100%;

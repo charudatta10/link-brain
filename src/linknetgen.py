@@ -35,7 +35,7 @@ class LinkNetGen:
             ) as config_file:
                 self.data = json.load(config_file)
             self.items_per_page = self.data.get(
-                "items_per_page", 5
+                "items_per_page", 10
             )  # Default to 5 items per page
             logging.info("Configuration loaded successfully.")
         except FileNotFoundError as e:
