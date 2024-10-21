@@ -14,12 +14,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 20rem;
-    width: 12rem;
+    height: 200px; /* adjust to control the size  */
+  aspect-ratio: 1/cos(30deg);
+  clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+    background-color: var(--link-container-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+}
+
+
+
+
+/**
+
+.link-container {
+    animation: stack-links 900ms ease-in-out calc(50ms * var(--order));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* adjust to control the size  
+  aspect-ratio: 1/cos(30deg);
+  clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+  background: #3B8686;
     background-color: var(--link-container-color);
     transform: skew(20deg);
     cursor: pointer;
     transition: transform 100ms ease-in-out;
 }
-
+*/
 
