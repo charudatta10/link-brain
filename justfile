@@ -24,41 +24,41 @@ default:
     @just --choose
 
 # create files and directories
-init:
+project-init:
     #!pwsh
     New-Project.ps1
 
 # add documentation to repo
-docs:
+docs-init:
     #!pwsh
     conda activate blog
     python -m mkdocs new .
 
 # generate and readme to repo    
-readme:
+project-readme:
     #!pwsh
     conda activate w
     python {{env_path}}/readmeGen/main.py
 
 # version control repo with git
-commit message="init":
+project-commit message="init":
     #!pwsh
     git add .
     git commit -m {{message}}
 
 # create windows executable
-exe file_name:
+project-exe file_name:
     #!pwsh
     pyinstaller src/{{file_name}} --onefile
 
 # run python unit test 
-tests:
+code-tests:
     #!pwsh
     conda activate webdev
     python -m unittest discover -s tests
 
 # run project
-run:
+project-run:
     #!pwsh
     python run.py
 
@@ -68,33 +68,33 @@ quit:
     write-Host "Copyright © 2024 Charudatta"
     
 # install dependencies
-install:
+project-install:
     #!pwsh
     pip install -r requirements.txt
 
 # lint code
-lint:
+code-lint:
     #!pwsh
     pylint src/
     flake8 src/
 
 # format code
-format:
+code-format:
     #!pwsh
     black src/
 
 # run security checks
-security:
+code-security:
     #!pwsh
     bandit -r src/
 
 # build documentation
-build-docs:
+docs-build:
     #!pwsh
     mkdocs build
 
 # deploy application
-deploy:
+project-deploy:
     #!pwsh
     git pull origin main --force
     @test 
@@ -105,37 +105,37 @@ deploy:
     git push -u origin main
 
 # setup logging
-setup-logging:
+log-init:
     #!pwsh
     Add-Logger.ps1
 
 # view logs
-view-logs:
+log-view:
     #!pwsh
     Get-Content -Path ".log" -Tail 10
 
 # clean up
-clean:
+build-clean:
     #!pwsh
     Remove-Item -Recurse -Force dist, build, *.egg-info
 
 # check for updates
-update:
+project-update:
     #!pwsh
     pip list --outdated
 
 # project mangement add task and todos 
-todos:
+cicd-todos:
     #!pwsh
     wic
 
-timeit cmd="start":
+cicd-timeit cmd="start":
     #!pwsh
     timetrace {{cmd}} # start, stop, list
 
 # Add custom tasks, enviroment variables
 
-compile:
+code-compile:
     #!pwsh
     conda activate w
     python src/main.py
