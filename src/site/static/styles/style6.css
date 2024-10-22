@@ -1,13 +1,32 @@
 @import "style.css";
 
+#links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 4rem;
+    width: 100%;
+    justify-content: center;
+}
 
 .link-container {
-    height: 6rem;
-    width: 6rem;
-    background-color: var(--link-container-color);
-    border-radius: 50%; /* Optional: Make container circular */
+    animation: stack-links 900ms ease-in-out calc(50ms * var(--order));
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 7rem;
+    background-color: var(--link-container-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+    --r: 0.7rem;
+    /* control the radius */
+
+    aspect-ratio: 1.5;
+    padding: calc(2*var(--r));
+    background: rgba(3, 0, 15, 0.712);
+    mask:
+        radial-gradient(var(--r), #0000 97%, #000) round calc(-1.5*var(--r)) calc(-1.5*var(--r))/calc(3*var(--r)) calc(3*var(--r)),
+        linear-gradient(#000 0 0) no-repeat 50%/calc(100% - 3*var(--r)) calc(100% - 3*var(--r));
+
 }
