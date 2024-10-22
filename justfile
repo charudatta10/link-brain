@@ -112,7 +112,7 @@ setup-logging:
 # view logs
 view-logs:
     #!pwsh
-    Get-Content -Path "app.log" -Tail 10
+    Get-Content -Path ".log" -Tail 10
 
 # clean up
 clean:

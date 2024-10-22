@@ -1,7 +1,7 @@
-from jinja2 import Template
-from pathlib import Path
 import json
 import logging
+from pathlib import Path
+from jinja2 import Template
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -9,9 +9,19 @@ logging.basicConfig(
 
 
 class LinkNetGen:
+    """
+    Inputs: template files, config file both located in parent folder
+    if file location is different change file location using object instance
+    Outputs: site/index.html is generated in parent folder
+
+    """
+
     def __init__(self) -> None:
         self.template_path = Path(__file__).parent / "template"
         self.config_path = Path(__file__).parent
+        self.template = Template("")
+        self.data = {}
+        self.doc = {}
 
     def add_template(self):
         try:
@@ -52,16 +62,13 @@ class LinkNetGen:
             links = self.data.get("links", {})
             logging.info(f"Links: {links}")
             logging.info(f"Items per page: {self.items_per_page}")
-
             # Convert the dictionary to a list of tuples
             links_list = list(links.items())
             paginated_data = []
             for i in range(0, len(links_list), self.items_per_page):
                 logging.info(f"Slicing from {i} to {i + self.items_per_page}")
-                paginated_data.append(links_list[i:i + self.items_per_page])
-
+                paginated_data.append(links_list[i : i + self.items_per_page])
             logging.info(f"Paginated data: {paginated_data}")
-
             self.data["paginated_links"] = paginated_data
             self.data["total_pages"] = len(paginated_data)
             self.doc = self.template.render(**self.data)
@@ -69,9 +76,6 @@ class LinkNetGen:
         except Exception as e:
             logging.error(f"Failed to render template: {e}")
             self.doc = ""
-
-
-
 
     def gen_file(self):
         try:
