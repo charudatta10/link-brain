@@ -2,8 +2,8 @@
 
 
 .link-container {
-    height: 6rem;
-    width: 6rem;
+    height: 12rem;
+    width: 12rem;
     background-color: var(--link-container-color);
     aspect-ratio: 1/cos(30deg);
     clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);

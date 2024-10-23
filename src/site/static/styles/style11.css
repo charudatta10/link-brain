@@ -1,0 +1,37 @@
+@import "style.css";
+
+#links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 4rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.link-container {
+    animation: stack-links 900ms ease-in-out calc(50ms * var(--order));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    background-color: var(--link-container-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+    --r: 30px;  /* control the circle radius */
+  --s: 200px; /* control the main size */
+
+  width: calc(var(--s) + var(--r));
+  aspect-ratio: 1;
+  --_l:#0000 calc(100% - 1px),#000;
+  --_g:100% 0/calc(100% - var(--r)) calc(100% - var(--r)) no-repeat;
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) no-repeat
+    radial-gradient(var(--r),#000 calc(100% - 1px),#0000);
+  mask: 
+    0 calc(50% - var(--r)/2) var(--_m),calc(50% + var(--r)/2) 100% var(--_m),
+    radial-gradient(var(--r) at top  ,var(--_l)) var(--_g) intersect,
+    radial-gradient(var(--r) at right,var(--_l)) var(--_g);
+
+}
+ 

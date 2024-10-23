@@ -1,0 +1,33 @@
+@import "style.css";
+
+#links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 4rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.link-container {
+    animation: stack-links 900ms ease-in-out calc(50ms * var(--order));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    background-color: var(--link-container-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+    --s: 50px; /* size of the corners */
+  border: 8px solid #B38184; 
+  padding: 10px;
+  height: 250px;
+  width: 300px;
+  background: #0e0e0e content-box;
+  mask: 
+    conic-gradient(#000 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0) 
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));
+
+}

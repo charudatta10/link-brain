@@ -1,0 +1,45 @@
+@import "style.css";
+
+#links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 4rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.link-container {
+    animation: stack-links 900ms ease-in-out calc(50ms * var(--order));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    background-color: var(--link-container-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 100ms ease-in-out;
+    --s: 18px;  /* control the size of the spikes */
+  --w: 350px; /* preferred image width */
+  --c:#090909;
+  
+  width: round(var(--w),4*var(--s)); 
+  aspect-ratio: 1;
+  object-fit: cover;
+  padding: calc(2*var(--s));
+  --_c:50%,#0000 calc(2*atan(2)),var(--c) 0;
+  --_b:var(--s) left var(--_c);
+  --_m:var(--s) top  var(--_c);
+  background:
+    conic-gradient(from atan(-2) at top var(--_b)),
+    conic-gradient(from calc(180deg - atan(2)) at bottom var(--_b)) 0 100%;
+  background-size: calc(4*var(--s)) 50%;
+  background-repeat: repeat-x;
+  mask:
+    conic-gradient(from calc(atan(-2) - 90deg) at left var(--_m)),
+    conic-gradient(from atan(.5) at right var(--_m)) 100% 0;
+  mask-size: 50% calc(4*var(--s));
+  mask-repeat: repeat-y;
+
+}
+ 
