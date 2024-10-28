@@ -1,4 +1,4 @@
-#    <one line to give the program's name and a brief idea of what it does.>  
+#    portfolio  
 #    Copyright © 2024 Charudatta
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,123 +18,62 @@
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-env_path := "C:/Users/$env:username/Documents/GitHub"
+local__path := "C:/Users/$env:username/Documents/GitHub/"
 
 default:
-    @just --choose
+    @just --list
 
 # create files and directories
-project-init:
+init:
     #!pwsh
-    New-Project.ps1
+    $ProjectName = Read-Host "Enter your project name"
+    Initialize-Project -ProjectName $ProjectName
 
 # add documentation to repo
-docs-init:
+docs:
     #!pwsh
-    conda activate blog
-    python -m mkdocs new .
-
-# generate and readme to repo    
-project-readme:
-    #!pwsh
-    conda activate w
-    python {{env_path}}/readmeGen/main.py
+    mkdocs build
 
 # version control repo with git
-project-commit message="init":
+commit message="init":
     #!pwsh
     git add .
     git commit -m {{message}}
 
 # create windows executable
-project-exe file_name:
+exe file_name:
     #!pwsh
     pyinstaller src/{{file_name}} --onefile
-
-# run python unit test 
-code-tests:
-    #!pwsh
-    conda activate webdev
-    python -m unittest discover -s tests
-
-# run project
-project-run:
-    #!pwsh
-    python run.py
-
+ 
 # exit just file
 quit:
     #!pwsh
     write-Host "Copyright © 2024 Charudatta"
     
-# install dependencies
-project-install:
-    #!pwsh
-    pip install -r requirements.txt
-
-# lint code
-code-lint:
-    #!pwsh
-    pylint src/
-    flake8 src/
-
-# format code
-code-format:
-    #!pwsh
-    black src/
-
-# run security checks
-code-security:
-    #!pwsh
-    bandit -r src/
-
-# build documentation
-docs-build:
-    #!pwsh
-    mkdocs build
-
 # deploy application
-project-deploy:
+deploy:
     #!pwsh
-    git pull origin main --force
-    @test 
-    @security
-    @lint
-    @format
-    @commit
-    git push -u origin main
-
-# setup logging
-log-init:
-    #!pwsh
-    Add-Logger.ps1
+    $CommitMessage = Read-Host "Enter your commit message"
+    Invoke-DeployChecks -CommitMessage $CommitMessage
 
 # view logs
-log-view:
+view-logs:
     #!pwsh
-    Get-Content -Path ".log" -Tail 10
+    Get-Content -Path "app.log" -Tail 10
 
 # clean up
-build-clean:
+clean:
     #!pwsh
     Remove-Item -Recurse -Force dist, build, *.egg-info
 
-# check for updates
-project-update:
-    #!pwsh
-    pip list --outdated
-
 # project mangement add task and todos 
-cicd-todos:
+tasks:
     #!pwsh
-    wic
-
-cicd-timeit cmd="start":
-    #!pwsh
-    timetrace {{cmd}} # start, stop, list
+    python {{local__path}}"project-manager/src/project-manager-cli"
 
 # Add custom tasks, enviroment variables
 
+# compile jinja2 to html
 code-compile:
     #!pwsh
     conda activate w
