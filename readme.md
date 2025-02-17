@@ -1,3 +1,17 @@
+> [!IMPORTANT]
+> Read the follwing notices before contribtuing to this project.
+
+> [!CAUTION]  
+> Project Archived
+
+> [!WARNING]
+> This project, [link-brain](https://github.com/charudatta10/link-brain/), has been archived and is no longer maintained. 
+
+> [!TIP]
+> For future developments and improvements, please refer to project: [link-net](https://github.com/charudatta10/link-net/)).
+
+> [!NOTE]
+> Thank you for your support and contributions! 
  
 # LinkBrain
 
